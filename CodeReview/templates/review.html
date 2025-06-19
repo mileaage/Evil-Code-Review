@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Code Review Results{% endblock %}
+
+{% block extra_css %}
+<style>
+    .code-display, .review-display {
+        background: #f9fafb;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 24px;
+        overflow-x: auto;
+    }
+    
+    .code-display code {
+        font-family: 'Fira Mono', 'Consolas', monospace;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #2d3748;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+    
+    .review-display {
+        background: #fff;
+        border: 1.5px solid #3182ce;
+        margin-top: 32px;
+    }
+    
+    .review-display p {
+        margin-bottom: 16px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Submitted Code</h1>
+    <div class="code-display">
+        <code>{{ code }}</code>
+    </div>
+    
+    <h1>AI Review</h1>
+    <div class="review-display">
+        {{ response|safe }}
+    </div>
+</div>
+{% endblock %}

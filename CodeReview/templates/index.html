@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}Evil Code Review{% endblock %}
+
+{% block app_name %}Evil Code Review{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Evil Code Review</h1>
+    <form method="post" action="/review">
+        <label for="codebox">Paste your code below:</label>
+        <textarea id="codebox" name="code" placeholder="Enter your code here..."></textarea>
+        
+        <div class="insult-meter">
+            <label for="insult-level">Insult Level:</label>
+            <div class="meter-container">
+                <input type="range" id="insult-level" name="insult_level" min="1" max="10" value="5" class="slider">
+                <div class="meter-labels">
+                    <span class="label-left">Gentle</span>
+                    <span class="label-center" id="current-level">5</span>
+                    <span class="label-right">Savage</span>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn-full">Send Code</button>
+    </form>
+</div>
+
+<style>
+.insult-meter {
+    margin: 20px 0;
+}
+
+.insult-meter label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.meter-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.slider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #4CAF50 0%, #FFC107 50%, #F44336 100%);
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.slider::-webkit-slider-track {
+    background: transparent;
+    height: 8px;
+    border-radius: 5px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    border: 3px solid #333;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 10;
+}
+
+.slider::-moz-range-track {
+    background: linear-gradient(to right, #4CAF50 0%, #FFC107 50%, #F44336 100%);
+    height: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    border: 3px solid #333;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.meter-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.label-center {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #333;
+    min-width: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .meter-labels {
+        font-size: 0.8em;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('insult-level');
+    const currentLevel = document.getElementById('current-level');
+    
+    slider.addEventListener('input', function() {
+        currentLevel.textContent = this.value;
+    });
+});
+</script>
+{% endblock %}
