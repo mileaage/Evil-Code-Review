@@ -1,6 +1,6 @@
-# CodeReview
+# Evil Code Review
 
-Welcome to CodeReview.
+Welcome to Evil Code Review.
 This just rates your code in a funny way.
 
 ## Overview
@@ -11,7 +11,7 @@ This repository is intended to be modified so mess around with it if you want
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/mileaage/CodeReview.git
+    git clone https://github.com/mileaage/Evil-Code-Review.git
     ```
 2. Add your code or review comments.
 3. Submit a pull request for feedback.
